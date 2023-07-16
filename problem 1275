@@ -1,0 +1,48 @@
+class Solution {
+    public static int checkforgame(int a[][]){
+        for(int i=0;i<a.length;i++){
+            if(a[i][0]==a[i][1]&&a[i][1]==a[i][2]){
+                return a[i][0];
+            }
+            if(a[0][i]==a[1][i]&&a[1][i]==a[2][i]){
+                return a[0][i];
+            }
+        }
+        if(a[0][0]==a[1][1]&&a[1][1]==a[2][2]){
+            return  a[0][0];
+        }
+        if(a[0][2]==a[1][1]&&a[1][1]==a[2][0]){
+            return a[0][2];
+        }
+        return 0;
+        
+    
+    }
+    public String tictactoe(int[][] moves) {
+       
+        int a[][]=new int [3][3];
+        for(int i=0;i<moves.length;i++){
+            if(i%2==0){
+                a[moves[i][0]][moves[i][1]]=1;
+            }
+            else {a[moves[i][0]][moves[i][1]]=-1;}
+
+        }
+        int x=checkforgame(a);
+        if(x>=0){
+            if(x==0){
+                if(moves.length<9){
+            return "Pending";
+        }
+        return "Draw";
+        
+        }
+            
+            else return "A";
+        }
+        else return "B";
+         
+        
+        }
+
+}
