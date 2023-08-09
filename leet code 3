@@ -1,0 +1,22 @@
+public int lengthOfLongestSubstring(String s) {
+        if(s.length()==0){
+            return 0;
+        }
+        HashSet<Character> hs=new HashSet<>();
+        int size=0;
+        for(int i=0;i<s.length();i++){
+            int j=i;
+            while(j<s.length()){
+                if(!hs.contains(s.charAt(j))){
+                    hs.add(s.charAt(j));
+                }
+                else{
+                    break;
+                }
+                j++;
+            }
+            size=Math.max(size,hs.size());
+            hs.clear();
+        }
+        return size;
+    }
