@@ -1,0 +1,34 @@
+ public static ListNode rot(ListNode n){
+        if(n.next.next==null){
+            ListNode cur=n;
+            ListNode nxt=n.next;
+            n.next=null;
+            nxt.next=cur;
+            return nxt;
+        }
+        ListNode temp=n;
+        while(temp.next.next!=null){
+            temp=temp.next;
+        }
+        int v=temp.next.val;
+        temp.next=null;
+        ListNode nn=new ListNode(v);
+        nn.next=n;
+        return nn;
+    }
+    public ListNode rotateRight(ListNode head, int k) {
+        if(k==0||head==null||head.next==null){
+            return head;
+        }
+        ListNode temp=head;
+        int l=0;
+        while(temp!=null){
+            temp=temp.next;
+            l++;
+        }
+        k=k%l;
+        for(int i=0;i<k;i++){
+            head=rot(head);
+        }
+        return head;
+    }
